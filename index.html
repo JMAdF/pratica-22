@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratica 22 - javascript</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript">
+        function carregar(id) {
+            $.ajax({
+                url: 'info.txt', 
+                type: 'GET',
+                success: function(data) {
+                    objeto_json = eval("("+data+")");
+                    //ler o conteudo
+                    var frase = "";
+                    if(id == 0) {
+                    frase = frase + "<h1>" + objeto_json.geral[0].titulo + "</h1>";
+                    frase = frase + "<p>" + objeto_json.geral[0].titulo + "</p>";
+                } else if (id == 1) {
+                    frase = frase + "<h1>" + objeto_json.geral[1].titulo + "</h1>";
+                    frase = frase + "<p>" + objeto_json.geral[1].titulo + "</p>";
+                } else if (id == 2) {
+                    frase = frase + "<h1>" + objeto_json.geral[2].titulo + "</h1>";
+                    frase = frase + "<p>" + objeto_json.geral[2].titulo + "</p>";
+                } else if (id == 3) {
+                    frase = frase + "<h1>" + objeto_json.geral[3].titulo + "</h1>";
+                    frase = frase + "<p>" + objeto_json.geral[3].titulo + "</p>";
+                }
+                    $("#caixa").html(frase); 
+                },
+            });
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="carregar(0)">inicio</button>
+    <button type="button" onclick="carregar(1)">Quem somos</button>
+    <button type="button" onclick="carregar(2)">Produtos</button>
+    <button type="button" onclick="carregar(3)">Contactos</button>
+    <div id="caixa">
+        Esta é a pagina web de teste, e aqui é onde irá aparecer o texto do respetivo botão.
+    </div>
+</body>
+</html>
